@@ -14,9 +14,10 @@ import {
 
 import AuthenticatedRoute from "./components/AuthenticatedRoute";
 import Dashboard from "./components/Dashboard";
+import Error404 from "./components/Error404";
+import Leaderboard from "./components/Leaderboard";
 import NavBar from "./components/Navbar";
 import SignIn from "./components/SignIn";
-import Leaderboard from "./components/Leaderboard";
 
 import { handleGetUsers } from "./actions/users";
 import { handleGetQuestions } from "./actions/questions";
@@ -62,10 +63,9 @@ class App extends Component {
 
             <Route path={SIGN_IN} component={SignIn} />
 
-            {/*TODO: Add 404 component*/}
-            {/*<Route path={ERROR_404} component={Error404}/>*/}
+            <Route path={ERROR_404} component={Error404}/>
 
-            {/*<Redirect to={ERROR_404} />*/}
+            <Redirect to={ERROR_404} />
           </Switch>
         </div>
       </React.Fragment>
