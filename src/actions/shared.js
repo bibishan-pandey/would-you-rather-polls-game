@@ -36,7 +36,11 @@ export const handleSaveQuestionAnswer = (questionId, answer) => {
 
     dispatch(showLoading());
 
-    return _saveQuestionAnswer({ authUser, questionId, answer })
+    return _saveQuestionAnswer({
+      authedUser: authUser,
+      qid: questionId,
+      answer,
+    })
       .then(() => {
         dispatch(saveQuestionAnswer({ authUser, questionId, answer }));
         dispatch(saveUserAnswer({ authUser, questionId, answer }));

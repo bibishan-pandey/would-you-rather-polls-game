@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { HOME_URL } from "../settings/urls";
 
 import AnsweredQuestion from "./AnsweredQuestion";
+import UnansweredQuestion from "./UnansweredQuestion";
 
 class Questions extends Component {
   render() {
@@ -26,8 +27,7 @@ class Questions extends Component {
             answered={isAnswered.optionOne ? "optionOne" : "optionTwo"}
           />
         ) : (
-          console.log(id)
-          // <UnansweredQuestion id={id} />
+          <UnansweredQuestion id={id} />
         )}
         <div className={"card pt-4 pb-3 my-4 text-center"}>
           <p>
