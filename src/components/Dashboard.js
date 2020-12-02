@@ -1,40 +1,67 @@
 import React, { Component } from "react";
 import { Tab, Tabs } from "react-bootstrap";
-
 import { connect } from "react-redux";
 
-class Dashboard extends Component {
+import QuestionContainer from "./QuestionContainer";
 
+class Dashboard extends Component {
   state = {
-    key: 'unanswered',
+    key: "unanswered",
   };
 
   setTabs = (key) => {
-    this.setState({key});
+    this.setState({ key });
   };
 
   render() {
-    const { answeredQuestions, unansweredQuestions } = this.props;
+    const { answeredQuestions, unansweredQuestions, users } = this.props;
 
     return (
-      <Tabs defaultActiveKey="unanswered" id="uncontrolled-tab-example" activeKey={this.state.key}
-            onSelect={(k) => this.setTabs(k)}>
+      <Tabs
+        defaultActiveKey="unanswered"
+        activeKey={this.state.key}
+        onSelect={(k) => this.setTabs(k)}
+      >
         <Tab eventKey="unanswered" title="Unanswered Questions">
-          {unansweredQuestions.length ? unansweredQuestions.map(question => (
-            console.log('Unanswered questions', question)
-          )) : <p>There aren't any unanswered questions</p>}
+          <div className={"row"}>
+            {unansweredQuestions.length ? (
+              unansweredQuestions.map((question) => (
+                <QuestionContainer
+                  key={question.id}
+                  question={question}
+                  user={users[question.author]}
+                />
+              ))
+            ) : (
+              <div className={'col'}>
+                <p className={"mt-4"}>There aren't any unanswered questions</p>
+              </div>
+            )}
+          </div>
         </Tab>
         <Tab eventKey="answered" title="Answered Questions">
-          {answeredQuestions.length ? answeredQuestions.map(question => (
-            console.log('Answered questions', question)
-          )) : <p>There aren't any answered questions</p>}
+          <div className={"row"}>
+            {answeredQuestions.length ? (
+              answeredQuestions.map((question) =>
+                <QuestionContainer
+                  key={question.id}
+                  question={question}
+                  user={users[question.author]}
+                />
+              )
+            ) : (
+              <div className={'col'}>
+                <p className={"mt-4"}>There aren't any answered questions</p>
+              </div>
+            )}
+          </div>
         </Tab>
       </Tabs>
     );
   }
 }
 
-function mapStateToProps({ authUser, questions }) {
+function mapStateToProps({ authUser, questions, users }) {
   const sortTimeDescending = (a, b) => b.timestamp - a.timestamp;
   const allQuestions = Object.keys(questions).map(
     (question) => questions[question]
@@ -53,6 +80,7 @@ function mapStateToProps({ authUser, questions }) {
   return {
     answeredQuestions,
     unansweredQuestions,
+    users,
   };
 }
 

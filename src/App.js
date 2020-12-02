@@ -53,7 +53,7 @@ class App extends Component {
             {/*TODO: Add 404 component*/}
             {/*<Route path={ERROR_404} component={Error404}/>*/}
 
-            <Redirect to={ERROR_404} />
+            {/*<Redirect to={ERROR_404} />*/}
           </Switch>
         </div>
       </div>
