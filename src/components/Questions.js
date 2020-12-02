@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 import { HOME_URL } from "../settings/urls";
 
+import AnsweredQuestion from "./AnsweredQuestion";
+
 class Questions extends Component {
   render() {
     const {
@@ -17,19 +19,28 @@ class Questions extends Component {
 
     return (
       <div className={"mt-4"}>
-        {isAnswered.optionOne || isAnswered.optionTwo
-          ? console.log(optionOne, optionTwo)
-          : console.log(id)}
-        <p>
-          Asked by {author.name}{" "}
-          <img
-            src={author.avatarURL}
-            alt={author.name}
-            aria-hidden="true"
-            className={"img-fluid"}
-            width={50}
+        {isAnswered.optionOne || isAnswered.optionTwo ? (
+          <AnsweredQuestion
+            optionOne={optionOne}
+            optionTwo={optionTwo}
+            answered={isAnswered.optionOne ? "optionOne" : "optionTwo"}
           />
-        </p>
+        ) : (
+          console.log(id)
+          // <UnansweredQuestion id={id} />
+        )}
+        <div className={"card pt-4 pb-3 my-4 text-center"}>
+          <p>
+            Asked by {author.name}
+            <img
+              src={author.avatarURL}
+              alt={author.name}
+              aria-hidden="true"
+              className={"img-fluid"}
+              width={50}
+            />
+          </p>
+        </div>
         <Link to={HOME_URL} className={"btn btn-outline-primary"}>
           Back
         </Link>
