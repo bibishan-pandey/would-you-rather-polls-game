@@ -4,7 +4,7 @@ import {
   SAVE_USER_QUESTION,
 } from "../actions/users";
 
-const users = (state, action) => {
+const users = (state = {}, action) => {
   switch (action.type) {
     case GET_USERS:
       return {
