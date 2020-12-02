@@ -12,6 +12,7 @@ import {
 } from "./settings/urls";
 
 import AuthenticatedRoute from "./components/AuthenticatedRoute";
+import Dashboard from "./components/Dashboard";
 import NavBar from "./components/Navbar";
 
 import {handleGetUsers} from "./actions/users";
@@ -34,7 +35,8 @@ class App extends Component {
           <Switch>
 
             {/*TODO: Add Home/Dashboard Component*/}
-            {/*<AuthenticatedRoute exact path={HOME_URL} component={Dashboard} isAuthenticated={isAuthenticated}/>*/}
+            {/*<AuthenticatedRoute exact={true} path={HOME_URL} component={Dashboard} isAuthenticated={isAuthenticated}/>*/}
+            <Route exact={true} path={HOME_URL} component={Dashboard}/>
 
             {/*TODO: Add New Questions Component*/}
             {/*<AuthenticatedRoute path={NEW_QUESTIONS} component={AddQuestion} isAuthenticated={isAuthenticated}/>*/}
