@@ -18,6 +18,7 @@ import Dashboard from "./components/Dashboard";
 import Error404 from "./components/Error404";
 import Leaderboard from "./components/Leaderboard";
 import NavBar from "./components/Navbar";
+import Questions from "./components/Questions";
 import SignIn from "./components/SignIn";
 
 import { handleGetUsers } from "./actions/users";
@@ -54,8 +55,11 @@ class App extends Component {
                   isAuthenticated={isAuthenticated}
                 />
 
-                {/* TODO: Add Detail of Question/Poll*/}
-                {/* <AuthenticatedRoute path={QUESTIONS + '/:question_id'} component={Questions} isAuthenticated={isAuthenticated}/>*/}
+                <AuthenticatedRoute
+                  path={QUESTIONS + "/:id"}
+                  component={Questions}
+                  isAuthenticated={isAuthenticated}
+                />
 
                 <AuthenticatedRoute
                   path={LEADERBOARD}
