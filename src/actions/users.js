@@ -24,11 +24,11 @@ export const saveUserQuestion = ({ authUser, id }) => {
 };
 
 // saveUserAnswer action creator
-export const saveUserAnswer = ({ authUser, qid, answer }) => {
+export const saveUserAnswer = ({ authUser, questionId, answer }) => {
   return {
     type: SAVE_USER_ANSWER,
     authUser,
-    qid,
+    questionId,
     answer,
   };
 };

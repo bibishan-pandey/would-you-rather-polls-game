@@ -12,6 +12,7 @@ import {
   SIGN_IN,
 } from "./settings/urls";
 
+import AddQuestion from "./components/AddQuestion";
 import AuthenticatedRoute from "./components/AuthenticatedRoute";
 import Dashboard from "./components/Dashboard";
 import Error404 from "./components/Error404";
@@ -38,7 +39,7 @@ class App extends Component {
         <NavBar />
         <div className={"container-fluid"}>
           <Switch>
-            {!loading && (
+            {!loading && isAuthenticated && (
               <React.Fragment>
                 <AuthenticatedRoute
                   exact={true}
@@ -47,8 +48,11 @@ class App extends Component {
                   isAuthenticated={isAuthenticated}
                 />
 
-                {/* TODO: Add New Questions Component*/}
-                {/* <AuthenticatedRoute path={NEW_QUESTIONS} component={AddQuestion} isAuthenticated={isAuthenticated}/>*/}
+                <AuthenticatedRoute
+                  path={NEW_QUESTIONS}
+                  component={AddQuestion}
+                  isAuthenticated={isAuthenticated}
+                />
 
                 {/* TODO: Add Detail of Question/Poll*/}
                 {/* <AuthenticatedRoute path={QUESTIONS + '/:question_id'} component={Questions} isAuthenticated={isAuthenticated}/>*/}
@@ -61,9 +65,9 @@ class App extends Component {
               </React.Fragment>
             )}
 
-            <Route path={SIGN_IN} component={SignIn} />
+            {!isAuthenticated && <Route path={SIGN_IN} component={SignIn} />}
 
-            <Route path={ERROR_404} component={Error404}/>
+            <Route path={ERROR_404} component={Error404} />
 
             <Redirect to={ERROR_404} />
           </Switch>

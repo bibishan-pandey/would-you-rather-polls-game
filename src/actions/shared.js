@@ -8,14 +8,18 @@ import { saveUserAnswer, saveUserQuestion } from "./users";
 // handleSaveQuestion async action creator
 export const handleSaveQuestion = (firstOption, secondOption) => {
   return (dispatch, getState) => {
-    const { authUser: author } = getState();
+    const { authUser } = getState();
 
     dispatch(showLoading());
 
-    return _saveQuestion({ author, firstOption, secondOption })
+    return _saveQuestion({
+      author: authUser,
+      optionOneText: firstOption,
+      optionTwoText: secondOption,
+    })
       .then((question) => {
         dispatch(saveQuestion(question));
-        dispatch(saveUserQuestion({ authUser: author, id: question.id }));
+        dispatch(saveUserQuestion({ authUser, id: question.id }));
       })
       .catch((e) => {
         console.warn("An error occurred while saving question: ", e.message);
