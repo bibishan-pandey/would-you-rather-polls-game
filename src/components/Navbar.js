@@ -46,7 +46,7 @@ const NavBar = ({ user, dispatch }) => {
               width={30}
             />
             <button
-              onClick={() => dispatch(setAuthUser(""))}
+              onClick={() => dispatch(setAuthUser(null))}
               className={"btn btn-danger"}
             >
               Sign Out

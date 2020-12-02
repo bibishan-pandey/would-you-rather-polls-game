@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { setAuthUser } from "../actions/authUser";
@@ -7,7 +7,7 @@ import { HOME_URL } from "../settings/urls";
 
 class SignIn extends Component {
   state = {
-    redirectToReferrer: false,
+    // redirectToReferrer: false,
     selectedUser: "",
   };
 
@@ -18,18 +18,20 @@ class SignIn extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.dispatch(setAuthUser(this.state.selectedUser));
-    this.setState({ redirectToReferrer: true });
+    this.props.history.push(HOME_URL);
+    // this.setState({ redirectToReferrer: true });
   };
 
   render() {
-    const { from } = this.props.location.state || {
-      from: { pathname: HOME_URL },
-    };
-    const { redirectToReferrer } = this.state;
-
-    if (redirectToReferrer) {
-      return <Redirect to={from} />;
-    }
+    // const { from } = this.props.location.state || {
+    //   from: { pathname: HOME_URL },
+    // };
+    // console.log(from);
+    // const { redirectToReferrer } = this.state;
+    //
+    // if (redirectToReferrer) {
+    //   return <Redirect to={from} />;
+    // }
     const name = "username";
     return (
       <div className={"row mt-5"}>
