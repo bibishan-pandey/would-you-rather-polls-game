@@ -36,7 +36,7 @@ class SignIn extends Component {
         <div className={"col"}></div>
         <div className={"col"}>
           <form onSubmit={this.handleSubmit}>
-            <h1>Please login as one of the following</h1>
+            <h1>Sign In</h1>
             <div className="form-group">
               <label htmlFor={name} className="form-label">
                 Sign in as one of the following user
