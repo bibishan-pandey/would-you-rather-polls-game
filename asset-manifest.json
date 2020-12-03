@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/would-you-rather-polls-game/static/css/main.875059cf.chunk.css",
-    "main.js": "/would-you-rather-polls-game/static/js/main.986adce2.chunk.js",
-    "main.js.map": "/would-you-rather-polls-game/static/js/main.986adce2.chunk.js.map",
+    "main.js": "/would-you-rather-polls-game/static/js/main.df74dcdb.chunk.js",
+    "main.js.map": "/would-you-rather-polls-game/static/js/main.df74dcdb.chunk.js.map",
     "runtime-main.js": "/would-you-rather-polls-game/static/js/runtime-main.cb3c9746.js",
     "runtime-main.js.map": "/would-you-rather-polls-game/static/js/runtime-main.cb3c9746.js.map",
     "static/css/2.1a02f21c.chunk.css": "/would-you-rather-polls-game/static/css/2.1a02f21c.chunk.css",
@@ -22,6 +22,6 @@
     "static/css/2.1a02f21c.chunk.css",
     "static/js/2.2a68c38b.chunk.js",
     "static/css/main.875059cf.chunk.css",
-    "static/js/main.986adce2.chunk.js"
+    "static/js/main.df74dcdb.chunk.js"
   ]
 }
