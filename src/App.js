@@ -32,11 +32,12 @@ class App extends Component {
   }
 
   render() {
-    const { isAuthenticated } = this.props;
+    const { isAuthenticated, loading } = this.props;
+
+    if (loading.default !== 0) return <LoadingBar loading={1} progressIncrease={50} />;
 
     return (
       <React.Fragment>
-        <LoadingBar />
         <NavBar />
         <div className={"container-fluid"}>
             <Switch>
@@ -47,7 +48,7 @@ class App extends Component {
               <AuthenticatedRoute path={LEADERBOARD} component={Leaderboard} isAuthenticated={isAuthenticated}/>
               <Route path={ERROR_404} component={Error404} />
 
-              <Redirect to={ERROR_404} />
+              <Redirect to={HOME_URL} />
             </Switch>
         </div>
       </React.Fragment>
@@ -55,10 +56,10 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ authUser }) {
+function mapStateToProps({ authUser, loadingBar }) {
   return {
     isAuthenticated: !!authUser,
-    loading: authUser === null,
+    loading: loadingBar,
   };
 }
 
