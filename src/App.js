@@ -32,49 +32,23 @@ class App extends Component {
   }
 
   render() {
-    const { isAuthenticated, loading } = this.props;
+    const { isAuthenticated } = this.props;
 
     return (
       <React.Fragment>
         <LoadingBar />
         <NavBar />
         <div className={"container-fluid"}>
-          <Switch>
-            {!loading && isAuthenticated && (
-              <React.Fragment>
-                <AuthenticatedRoute
-                  exact={true}
-                  path={HOME_URL}
-                  component={Dashboard}
-                  isAuthenticated={isAuthenticated}
-                />
+            <Switch>
+              <Route path={SIGN_IN} component={SignIn} />
+              <AuthenticatedRoute exact={true} path={HOME_URL} component={Dashboard} isAuthenticated={isAuthenticated}/>
+              <AuthenticatedRoute path={NEW_QUESTIONS} component={AddQuestion} isAuthenticated={isAuthenticated}/>
+              <AuthenticatedRoute path={QUESTIONS + "/:id"} component={Questions} isAuthenticated={isAuthenticated}/>
+              <AuthenticatedRoute path={LEADERBOARD} component={Leaderboard} isAuthenticated={isAuthenticated}/>
+              <Route path={ERROR_404} component={Error404} />
 
-                <AuthenticatedRoute
-                  path={NEW_QUESTIONS}
-                  component={AddQuestion}
-                  isAuthenticated={isAuthenticated}
-                />
-
-                <AuthenticatedRoute
-                  path={QUESTIONS + "/:id"}
-                  component={Questions}
-                  isAuthenticated={isAuthenticated}
-                />
-
-                <AuthenticatedRoute
-                  path={LEADERBOARD}
-                  component={Leaderboard}
-                  isAuthenticated={isAuthenticated}
-                />
-              </React.Fragment>
-            )}
-
-            {!isAuthenticated && <Route path={SIGN_IN} component={SignIn} />}
-
-            <Route path={ERROR_404} component={Error404} />
-
-            <Redirect to={ERROR_404} />
-          </Switch>
+              <Redirect to={ERROR_404} />
+            </Switch>
         </div>
       </React.Fragment>
     );
