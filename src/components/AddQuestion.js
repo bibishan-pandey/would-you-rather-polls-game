@@ -70,7 +70,9 @@ class AddQuestion extends Component {
           </div>
           <button
             className={"btn btn-outline-success"}
-            disabled={!firstOption || !secondOption}
+            disabled={
+              !firstOption || !secondOption || firstOption === secondOption
+            }
           >
             Add Question
           </button>
