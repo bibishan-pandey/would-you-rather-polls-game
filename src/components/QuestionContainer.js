@@ -6,7 +6,7 @@ import { QUESTIONS } from "../settings/urls";
 
 const QuestionContainer = ({ question, user }) => {
   return (
-    <div className={"col-4 mt-4"}>
+    <div className={"col-12 col-md-4 mt-4"}>
       <Card>
         <Card.Header>
           <img

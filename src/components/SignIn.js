@@ -35,8 +35,8 @@ class SignIn extends Component {
     const name = "username";
     return (
       <div className={"row mt-5"}>
-        <div className={"col"}></div>
-        <div className={"col"}>
+        <div className={"col-12 col-md-4"}></div>
+        <div className={"col-12 col-md-4"}>
           <form onSubmit={this.handleSubmit}>
             <h1>Sign In</h1>
             <div className="form-group">
@@ -66,7 +66,7 @@ class SignIn extends Component {
             </button>
           </form>
         </div>
-        <div className={"col"}></div>
+        <div className={"col-12 col-md-4"}></div>
       </div>
     );
   }
