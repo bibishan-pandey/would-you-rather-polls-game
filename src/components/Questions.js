@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
-import { HOME_URL } from "../settings/urls";
+import { ERROR_404, HOME_URL } from "../settings/urls";
 
 import AnsweredQuestion from "./AnsweredQuestion";
 import UnansweredQuestion from "./UnansweredQuestion";
 
 class Questions extends Component {
   render() {
+    if (this.props.redirect) return <Redirect to={ERROR_404} />;
+
     const {
       author,
       isAnswered,
