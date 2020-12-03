@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Nav, Navbar } from "react-bootstrap";
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import {
   HOME_URL,
@@ -12,9 +12,6 @@ import {
 import { setAuthUser } from "../actions/authUser";
 
 const NavBar = ({ user, dispatch }) => {
-  if (!user) {
-    return <Redirect to={SIGN_IN} />;
-  }
   return (
     <Navbar bg="light" variant="light" expand="md" className={"mb-5"}>
       <NavLink className={"navbar-brand"} to={HOME_URL} exact={true}>
@@ -36,22 +33,31 @@ const NavBar = ({ user, dispatch }) => {
           </React.Fragment>
         </Nav>
         <Nav className={"ml-auto"}>
-          <div className={"d-flex align-items-center"}>
-            {user.name}
-            <img
-              src={user.avatarURL}
-              alt={user.name}
-              aria-hidden="true"
-              className={"img-fluid"}
-              width={30}
-            />
-            <button
-              onClick={() => dispatch(setAuthUser(null))}
-              className={"btn btn-danger"}
-            >
-              Sign Out
-            </button>
-          </div>
+          {!user && (
+            <React.Fragment>
+              <NavLink className={"nav-link"} to={SIGN_IN}>
+                Sign In
+              </NavLink>
+            </React.Fragment>
+          )}
+          {user && (
+            <div className={"d-flex align-items-center"}>
+              {user.name}
+              <img
+                src={user.avatarURL}
+                alt={user.name}
+                aria-hidden="true"
+                className={"img-fluid"}
+                width={30}
+              />
+              <button
+                onClick={() => dispatch(setAuthUser(null))}
+                className={"btn btn-danger"}
+              >
+                Sign Out
+              </button>
+            </div>
+          )}
         </Nav>
       </Navbar.Collapse>
     </Navbar>
